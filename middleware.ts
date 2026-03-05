@@ -12,8 +12,7 @@ const PROTECTED_PREFIXES = [
 ];
 
 function isProtectedPath(pathname: string): boolean {
-  if (pathname === "/") return true;
-  return PROTECTED_PREFIXES.some((prefix) => pathname.startsWith(prefix));
+  return PROTECTED_PREFIXES.some((prefix) => pathname === prefix || pathname.startsWith(prefix + "/"));
 }
 
 export async function middleware(request: NextRequest) {
